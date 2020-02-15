@@ -1,5 +1,5 @@
 {
-  "name": "webrtc",
+  "name": "webrtc-client",
   "version": "1.0.0",
   "author": "Zile GUO",
   "license": "MIT",
@@ -18,5 +18,9 @@
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
+  },
+  "scripts": {
+    "build": "webpack",
+    "devServer": "webpack-dev-server"
   }
 }
