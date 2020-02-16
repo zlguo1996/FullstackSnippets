@@ -1,8 +1,15 @@
-# Interactive Connectivity Establishment
+# Signaling server
 
 ### Objective
 
-In [Nuibot project](http://nuibot.haselab.net/), we want to automatically detect Nuibot devices in LAN in web application. This is a test project using an intermediate ICE server to solve this problem.
+In [Nuibot project](http://nuibot.haselab.net/), we want to automatically detect Nuibot devices in LAN in web application. This is a test project using an intermediate signaling server to solve this problem.
+
+### Approach
+
+- The intermediate server stores local IP and other information for every peer.
+- Two peers are considered in the same LAN when they possess same remote IP.
+- Every peer would be informed if other peer join / leave the same LAN.
+- Browser could use local IP of Nuibot to start a direct websocket connection.
 
 ### Commands
 
@@ -16,7 +23,7 @@ In [Nuibot project](http://nuibot.haselab.net/), we want to automatically detect
    yarn lint
    ```
 
-2. Run WebRTC ICE server:
+2. Run signaling server:
 
     ```
     cd ./server
