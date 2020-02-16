@@ -5,6 +5,8 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "@types/uuid": "^3.4.7",
+    "@types/ws": "^7.2.1",
     "nodemon": "^2.0.2",
     "ts-node": "^8.6.2",
     "tsc": "^1.20150623.0",
@@ -17,15 +19,24 @@
   },
   "nodemonConfig": {
     "restartable": "rs",
-    "ignore": [".git", "node_modules/**/node_modues"],
+    "ignore": [
+      ".git",
+      "node_modules/**/node_modues"
+    ],
     "verbose": true,
     "execMap": {
       "ts": "node --require ts-node/register"
     },
-    "watch": ["src/"],
+    "watch": [
+      "src/"
+    ],
     "env": {
       "NODE_ENV": "development"
     },
     "ext": "js, json, ts"
+  },
+  "dependencies": {
+    "uuid": "^3.4.0",
+    "ws": "^7.2.1"
   }
 }

@@ -1,9 +1,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Hello } from "./Hello";
+import { Peers } from "./Peers";
+
+const signalingServerAddress = "ws://127.0.0.1:8001"
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <Peers signalingServerAddress={signalingServerAddress} />,
     document.getElementById("container")
 );
