@@ -47,4 +47,4 @@ In [Nuibot project](http://nuibot.haselab.net/), we want to automatically detect
 
 [Getting Started with WebRTC](https://www.html5rocks.com/en/tutorials/webrtc/basics/)
 
-[Google I/O 2013 WebRTC slider](http://io13webrtc.appspot.com/#1)
+[Google I/O 2013 WebRTC slide](http://io13webrtc.appspot.com/#1)
