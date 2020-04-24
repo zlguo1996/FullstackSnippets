@@ -1,47 +1,32 @@
 import * as WebSocket from 'ws'
+import {Socket} from 'net'
 import * as http from 'http'
 import uuid from 'uuid'
 import {getIfExists, getCookieValue} from './utils'
 import {PeerType, Server as ServerMessage, Client as ClientMessage, RoomChangeType, RoomChangeEvent} from 'common-webrtc'
+import isIp from 'is-ip'
 
 export class Peer {
-    socket: WebSocket
+    socket: WebSocket | Socket
     id: string
     remoteIp: string
 
     name: string = ""
     localIp: string = ""
-    type: PeerType = 'browser' // TODO
+    type: PeerType = 'browser'
 
     registered: boolean = false
 
-    constructor(socket: WebSocket, request: http.IncomingMessage) {
+    constructor(socket: WebSocket | Socket, remoteIp: string) {
+        if (!isIp(remoteIp)) {
+            console.error(`'${remoteIp}' is not a valid ip address.`)
+        }
+
         this.socket = socket
 
-        this.remoteIp = this.getIp(request)
-        this.id = this.getId(request)
-    }
+        this.remoteIp = remoteIp
+        this.id = uuid()
 
-    private getIp(request: http.IncomingMessage): string {
-        let ip = ""
-        if (request.headers['x-forwarded-for']) {
-            ip = (request.headers['x-forwarded-for'] as string).split(/\s*,\s*/)[0]
-        } else {
-            ip = getIfExists(request.connection.remoteAddress, "")
-        }
-
-        // IPv4 and IPv6 use different values to refer to localhost
-        if (ip == '::1' || ip == '::ffff:127.0.0.1') {
-            ip = '127.0.0.1';
-        }
-
-        return ip
-    }
-
-    private getId(request: http.IncomingMessage): string {
-        return uuid()
-        // const idCandidate = getCookieValue("peerId", getIfExists(request.headers.cookie, ""))
-        // return idCandidate === "" ? uuid() : idCandidate
     }
 
     setPeerInfo(type: PeerType, name: string | undefined, localIp: string | undefined) {
@@ -74,6 +59,10 @@ export class Peer {
     private send(message: ServerMessage) {
         if (this.type !== 'browser') return     // not send message to nuibot
 
-        this.socket.send(JSON.stringify(message))
+        if ('send' in this.socket) {
+            this.socket.send(JSON.stringify(message))
+        } else {
+            this.socket.write(JSON.stringify(message), 'ascii')
+        }
     }
 }

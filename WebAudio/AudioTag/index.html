@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+    <button id='button1'>resume context</button>
+    <button id='button2'>add source to context</button>
+    <script>
+        // Create an <audio> element dynamically.
+        var audio = new Audio();
+        audio.src = '../docs/nyan.wav';
+        audio.controls = true;
+        audio.autoplay = true;
+        audio.loop = true;
+        document.body.appendChild(audio);
+
+        var context = new AudioContext();
+        var gain = context.createGain();
+        gain.gain.value = 0.5;
+
+        gain.connect(context.destination);
+
+        // var analyser = context.createAnalyser();
+
+        document.querySelector('#button1').addEventListener('click', function () {
+            context.resume();
+        })
+
+        document.querySelector('#button2').addEventListener('click', function () {
+            var source = context.createMediaElementSource(audio);
+            source.connect(gain);
+        })
+    </script>
+</body>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+    <audio id="player" controls></audio>
+    <button id="resume">resume</button>
+    <script>
+    const player = document.getElementById('player');
+
+    const handleSuccess = function(stream) {
+        const s = context.createMediaStreamSource(stream);
+        s.connect(gain);
+    };
+
+    const context = new AudioContext();
+    const gain = context.createGain();
+    gain.gain.value = 1;
+    gain.connect(context.destination);
+
+    const resume = function() {
+        context.resume();
+    }
+    document.querySelector('#resume').addEventListener('click', resume)
+
+    navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+        .then(handleSuccess);
+    </script>
+</body>

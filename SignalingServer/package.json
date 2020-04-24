@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "is-ip": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/is-ip": "^3.0.0"
+  }
+}
