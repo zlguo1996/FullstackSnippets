@@ -1,8 +1,36 @@
 <!DOCTYPE html>
 <head>
+    <style>
+        #canvas {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            background-color: aliceblue;
+        }
+        #user {
+            width: 50px;
+            height: 50px;
+            background-image: url("./icons/user.png");
+            background-repeat:no-repeat;
+            background-size:contain;
+            position: absolute;
+            left: calc(250px - 25px);
+            top: calc(250px - 25px);
+        }
+        #speaker {
+            width: 50px;
+            height: 50px;
+            background-image: url("./icons/speaker.png");
+            background-repeat:no-repeat;
+            background-size:contain;
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
-    <button id="startButton">Start</button>
-    <pre id="status"></pre>
+    <div id="canvas">
+        <div id="user"></div>
+    </div>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     <script type='module' src="./script.js"></script>
 </body>

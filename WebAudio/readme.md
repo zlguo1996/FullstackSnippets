@@ -26,11 +26,11 @@ npx http-server .
 1. [Audio tag](./AudioTag): Use audio tag as source for web audio API.
 
 2. [Local stream](./LocalStream): Connect local stream (mic) to web audio API.
-   
+
    Note that connect stream to audio tag, and then connect it to audio context will **not** work.
-   
+
 3. [Remote stream](./RemoteStream): Connect remote WebRTC stream to web audio API.
 
    Note that on chrome, need connect stream to audio tag.
 
-4. [Stereo](./Stereo): 3D audio effect (WIP)
+4. [Stereo](./Stereo): 3D audio effect
