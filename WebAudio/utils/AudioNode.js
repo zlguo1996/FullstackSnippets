@@ -5,6 +5,7 @@ export class AudioNode {
         this.audio.controls = true;
         this.audio.autoplay = true;
         this.audio.loop = true;
+        this.audio.muted = true;
         document.body.appendChild(this.audio);
     }
     getStreamDestinationNode(context) {
