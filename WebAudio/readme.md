@@ -42,3 +42,7 @@ npx http-server .
 4. [Stereo](./Stereo): 3D audio effect
 
    [sample](https://zlguo1996.github.io/FullstackSnippets/WebAudio/Stereo/index.html)
+
+5. [Echo cancellation](./EchoCancellation): Use [echoCancellation](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackSettings/echoCancellation) setting to cancel echo.
+
+   [sample](https://zlguo1996.github.io/FullstackSnippets/WebAudio/EchoCancellation/index.html)
