@@ -13,4 +13,4 @@ In our [jitsi-party](https://github.com/zlguo1996/jitsi-party) project, we find 
 
 In our project, we use the remote audio track of RTCPeerConnection. But the echo is not cancelled. The reason might be that the remote audio is processed by web audio API.
 
-In the example, we allow user to switch output from normal audio tag or audio context. We find that **only audio tag would perform echo cancellation**.
+In the example, we allow user to switch output from normal audio tag or audio context. We find that **only output by audio tag would perform echo cancellation**. When use audio context to output audio, echo would happen.
